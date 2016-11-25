@@ -1,0 +1,56 @@
+import time
+import random
+import turtle
+from tkinter import *
+#Draw an arena
+window = Tk()
+canvas = Canvas(window, width=1000, height=1000, bg='white')
+canvas.pack(padx=10,pady=10)
+#Draw lines in the arena
+canvas.create_line(0,50,450,50,fill="black",width=10)
+canvas.create_line(500,100,50,100,fill="black",width=10)
+canvas.create_line(50,100,50,450,fill="black",width=10)
+canvas.create_line(50,450,450,450,fill="black",width=10)
+canvas.create_line(500,400,100,400,fill="black",width=10)
+canvas.create_line(500,0,500,100,fill="black",width=10)
+canvas.create_line(0,500,500,500,fill="black",width=10)
+canvas.create_line(50,350,450,350,fill="black",width=10)
+canvas.create_line(100,300,500,300,fill="black",width=10)
+canvas.create_line(50,250,450,250,fill="black",width=10)
+canvas.create_line(100,200,500,200,fill="black",width=10)
+canvas.create_line(100,150,100,200,fill="black",width=10)
+canvas.create_line(100,150,500,150,fill="black",width=10)
+canvas.create_line(500,150,500,500,fill="black",width=10)
+canvas.create_line(550,0,550,550,fill="black",width=10)
+canvas.create_line(500,550,0,550,fill="black",width=10)
+# The velocity, or distance moved per time step
+vx = 10.0 # x velocity
+vy = 5.0 # y velocity
+# Boundaries
+x_min = 0.0
+y_min = 0.0
+x_max = 500.0
+y_max = 500.0
+robot=canvas.create_rectangle(5,5,30,30,fill='blue')
+def leftKey(event):
+    print ("Left key pressed")
+    x1,y1,x2,y2=canvas.coords(robot)
+    canvas.coords(robot,x1-20,y1,x2-20,y2)
+def rightKey(event):
+    print ("Right key pressed")
+    x1,y1,x2,y2=canvas.coords(robot)
+    canvas.coords(robot,x1+20,y1,x2+20,y2)
+def upKey(event):
+    print ("Up key pressed")
+    x1,y1,x2,y2=canvas.coords(robot)
+    canvas.coords(robot,x1,y1-20,x2,y2-20)
+def downKey(event):
+    print ("Down key pressed")
+    x1,y1,x2,y2=canvas.coords(robot)
+    canvas.coords(robot,x1,y1+20,x2,y2+20)
+canvas.bind('<Left>', leftKey)
+canvas.bind('<Right>', rightKey)
+canvas.bind('<Up>', upKey)
+canvas.bind('<Down>', downKey)
+canvas.focus_set()
+window.mainloop()
